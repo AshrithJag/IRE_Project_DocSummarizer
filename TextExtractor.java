@@ -1,3 +1,5 @@
+package summarizeDocs;
+
 import java.io.ByteArrayOutputStream;  
 import java.io.File;  
 import java.io.InputStream;  
@@ -48,22 +50,21 @@ class TextExtractor {
   }  
    
    
-  public void getString() {  
+   public String getString() {  
     //Get the text into a String object  
     extractedText = outputstream.toString();
     //Do whatever you want with this String object.  
-    System.out.println(extractedText);  
+   //System.out.println(extractedText);
+	return extractedText;  
   }  
    
-  public static void main(String args[]) throws Exception {  
-    if (args.length == 1) {  
+   public static String getTextContent(String Input) throws Exception {
+    
       TextExtractor textExtractor = new TextExtractor();
       System.getProperties().put("http.proxyHost", "proxy.iiit.ac.in");
 	  System.getProperties().put("http.proxyPort", "8080");  
-      textExtractor.process(args[0]);  
-      textExtractor.getString();  
-    } else {  
-      throw new Exception();  
-    }  
+      textExtractor.process(Input);  
+      String Result = textExtractor.getString();
+	return Result;  
   }  
 }
